@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Координаты точек</h2>
+
+<form>
+  <label for="firstX"> X для точки А:</label><br>
+  <input type="text" id="firstX"><br>
+
+  <label for="firstY"> Y для точки А:</label><br>
+  <input type="text" id="firstY"><br><br>
+
+  <label for="secondX"> X для точки В:</label><br>
+  <input type="text" id="secondX"><br>
+
+  <label for="second"> Y для точки В:</label><br>
+  <input type="text" id="secondY"><br><br>
+
+  <label for="thirdX"> X для точки С:</label><br>
+  <input type="text" id="thirdX"><br>
+
+  <label for="thirdY"> Y для точки С:</label><br>
+  <input type="text" id="thirdY"><br><br>
+</form> 
+
+  <button onclick="resolve()">Обчислить</button>
+  <br>
+  <br>
+
+
+<script>
+
+
+
+function resolve() {
+
+const xForA = Number(document.getElementById("firstX").value);
+const yForA = Number(document.getElementById("firstY").value);
+
+const xForB = Number(document.getElementById("secondX").value);
+const yForB = Number(document.getElementById("secondY").value);
+
+const xForC = Number(document.getElementById("thirdX").value);
+const yForC = Number(document.getElementById("thirdY").value);
+
+let AB;
+let BC;
+let AC;
+
+AB = Math.sqrt(Math.pow((xForA - xForB), 2) + Math.pow((yForA - yForB), 2));
+BC = Math.sqrt(Math.pow((xForB - xForC), 2) + Math.pow((yForB - yForC), 2));
+AC = Math.sqrt(Math.pow((xForA - xForC), 2) + Math.pow((yForA - yForC), 2));
+
+AB == AC && AB == BC ? document.body.appendChild(document.createTextNode("Треугольник равносторонний "))  : document.body.appendChild(document.createTextNode("Треугольник не равносторонний ")); 
+
+document.body.appendChild(document.createElement("br"));
+//document.body.appendChild(document.createElement("br"));
+
+AB == AC || AB == BC || AC == BC ? document.body.appendChild(document.createTextNode("Треугольник равнобедренный ")) : document.body.appendChild(document.createTextNode("Треугольник не равнобедренный "));
+
+document.body.appendChild(document.createElement("br"));
+//document.body.appendChild(document.createElement("br"));
+
+const triangls = [AB, BC, AC];
+const sorted = triangls.sort();
+Math.pow(sorted[2], 2) == Math.pow(sorted[0], 2) + Math.pow(sorted[1], 2) ? console.log("Треугольник прямоугольный ") : console.log("Треугольник не прямоугольный ");
+
+//console.log(AB);
+document.body.appendChild(document.createTextNode("Длина стороны AB: " + AB));
+
+document.body.appendChild(document.createElement("br"));
+
+//console.log(BC);
+document.body.appendChild(document.createTextNode("Длина стороны BC: " + BC));
+document.body.appendChild(document.createElement("br"));
+
+//console.log(AC);
+document.body.appendChild(document.createTextNode("Длина стороны AC: " + AC));
+document.body.appendChild(document.createElement("br"));
+
+
+const perimetr = AB + BC + AC;
+//console.log(perimetr);
+document.body.appendChild(document.createTextNode("Периметр треугольника: " + perimetr));
+document.body.appendChild(document.createElement("br"));
+
+
+document.body.appendChild(document.createTextNode("Все чётные числа от 0 до величины периметра треугольника включительно: "));
+document.body.appendChild(document.createElement("br"));
+
+for(let i = 0; i <= perimetr; i += 2) {
+
+	//console.log(i);
+	document.body.appendChild(document.createTextNode(i));
+	document.body.appendChild(document.createElement("br"));
+}
+
+};
+
+</script>
+
+
+</body>
